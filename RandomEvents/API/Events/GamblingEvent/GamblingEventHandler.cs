@@ -18,7 +18,7 @@ public class GamblingEventHandler(GamblingEvent @event)
     {
         if (ev.Player.IsScp || !ev.Player.IsAlive) return;
 
-        Random.InitState((int) (Time.time * 1000));
+        // Random.InitState((int) (Time.time * 1000));
         if (Random.Range(0, 100) < 2)
         {
             ev.Player.SyncEffect(new Effect(EffectType.SeveredHands, 0, 1, true, true));

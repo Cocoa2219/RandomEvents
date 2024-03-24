@@ -36,7 +36,6 @@ public class StartingItemEvent : IEvent
             {
                 if (player.IsScp || !player.IsAlive) continue;
 
-                Random.InitState((int) (Time.time * 1000));
                 for (var i = 0; i < Random.Range(5, 8); i++)
                 {
                     player.AddItem(GetRandomItem());
@@ -62,7 +61,6 @@ public class StartingItemEvent : IEvent
             if (ev.Player.IsScp || !ev.Player.IsAlive) return;
 
             ev.Player.ClearInventory();
-            Random.InitState((int) (Time.time * 1000));
             for (var i = 0; i < Random.Range(5, 8); i++)
             {
                 ev.Player.AddItem(GetRandomItem());

@@ -54,6 +54,8 @@ public class RandomEventsCommand : ICommand
                     return false;
                 }
 
+                RandomEvents.Instance.coreEventHandler.isTestRunning = true;
+
                 if (RandomEvents.Instance.coreEventHandler.RunEvent(selEvent))
                 {
                     response = $"{arguments.At(1)} 이벤트가 실행되었습니다.";

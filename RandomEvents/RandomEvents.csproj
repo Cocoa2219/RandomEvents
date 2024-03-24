@@ -23,7 +23,7 @@
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <PostBuildEvent>xcopy /y /s /i /d "C:\Users\user\Documents\RandomEvents\RandomEvents\bin\Debug\RandomEvents.dll" "C:\Users\user\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>
+        <PostBuildEvent>xcopy /y /s /i /d "C:\Users\PC\Documents\RandomEvents\RandomEvents\bin\Debug\RandomEvents.dll" "C:\Users\PC\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,13 +43,20 @@
         <Compile Include="API\Events\InfAmmoEvent\InfAmmoEvent.cs" />
         <Compile Include="API\Events\OutlawEvent\OutlawEvent.cs" />
         <Compile Include="API\Events\OutlawEvent\OutlawEventHandler.cs" />
+        <Compile Include="API\Events\SCPRushEvent\ScpRushEvent.cs" />
         <Compile Include="API\Events\SMBEvent\SMBEvent.cs" />
         <Compile Include="API\Events\SMBEvent\SMBEventHandler.cs" />
+        <Compile Include="API\Events\SpeedrunEvent\SpeedrunEvent.cs" />
         <Compile Include="API\Events\StartingItemEvent\StartingItemEvent.cs" />
         <Compile Include="API\Events\TestEvent\TestEvent.cs" />
         <Compile Include="API\Events\TestEvent\TestEventHandler.cs" />
+        <Compile Include="API\Events\WhoAmIEvent\WhoAmIEvent.cs" />
         <Compile Include="API\Interfaces\IEvent.cs" />
+        <Compile Include="Commands\First.cs" />
         <Compile Include="Commands\RandomEvents.cs" />
+        <Compile Include="Commands\Reroll.cs" />
+        <Compile Include="Commands\Second.cs" />
+        <Compile Include="Commands\Third.cs" />
         <Compile Include="Configuration.cs" />
         <Compile Include="CoreEventHandler.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -466,7 +473,7 @@
       <Content Include=".gitignore" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
     </Target>

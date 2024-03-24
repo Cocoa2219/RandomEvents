@@ -40,7 +40,7 @@ public class CollectorEvent : IEvent
             {
                 if (player.IsScp || !player.IsAlive) continue;
 
-                Random.InitState((int)(Time.time * 1000));
+                // Random.InitState((int)(Time.time * 1000));
                 for (var i = 0; i < Random.Range(1, 4); i++)
                 {
                     player.AddItem(GetRandomScpItem());

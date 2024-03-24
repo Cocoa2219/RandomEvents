@@ -1,4 +1,5 @@
-﻿using Exiled.API.Features;
+﻿using System.Linq;
+using Exiled.API.Features;
 using RandomEvents.API.Interfaces;
 using Player = Exiled.Events.Handlers.Player;
 using Server = Exiled.Events.Handlers.Server;
@@ -28,26 +29,36 @@ public class SmbEvent : IEvent
     }
 
     public string Name { get; } = "SMBEvent";
-    public string DisplayName { get; } = "일심동체 이벤트";
-    public string Description { get; } = "일심동체 이벤트입니다. 한 명이 사망할 시 모두 사망합니다.";
+    public string DisplayName { get; } = "일심동체";
+    public string Description { get; } = "한 명이 사망할 시 모두 사망합니다.";
 
-    private SmbEventHandler EventHandler { get; set; }
+    public SmbEventHandler EventHandler { get; set; }
+
+    public Exiled.API.Features.Player ChosenPlayer { get; set; }
 
     public void Run()
     {
-        EventHandler = new SmbEventHandler(this);
+        LogDebug("라운드가 시작되었습니다.");
+
+        var playerList = Exiled.API.Features.Player.List.ToList();
+
+        playerList.ShuffleList();
+
+        ChosenPlayer = playerList[0];
+
+        LogInfo($"{ChosenPlayer.CustomName}님이 선택되었습니다.");
     }
 
     public void RegisterEvents()
     {
+        EventHandler = new SmbEventHandler(this);
+
         LogDebug("이벤트 핸들러를 등록합니다.");
         if (EventHandler == null)
         {
             LogError("이벤트 핸들러가 null 입니다.");
             return;
         }
-
-        Server.RoundStarted += EventHandler.OnRoundStart;
 
         Player.Dying += EventHandler.OnPlayerDying;
     }
@@ -60,8 +71,6 @@ public class SmbEvent : IEvent
             LogError("이벤트 핸들러가 null 입니다.");
             return;
         }
-
-        Server.RoundStarted -= EventHandler.OnRoundStart;
 
         Player.Dying -= EventHandler.OnPlayerDying;
     }

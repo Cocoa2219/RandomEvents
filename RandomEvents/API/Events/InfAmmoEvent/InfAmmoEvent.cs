@@ -19,11 +19,18 @@ public class InfAmmoEvent : IEvent
     public void RegisterEvents()
     {
         Player.Shooting += OnShooting;
+        Player.UsingMicroHIDEnergy += OnUsingMicroHIDEnergy;
     }
 
     public void UnregisterEvents()
     {
         Player.Shooting -= OnShooting;
+        Player.UsingMicroHIDEnergy -= OnUsingMicroHIDEnergy;
+    }
+
+    private void OnUsingMicroHIDEnergy(UsingMicroHIDEnergyEventArgs ev)
+    {
+        ev.Drain = 0f;
     }
 
     private void OnShooting(ShootingEventArgs ev)

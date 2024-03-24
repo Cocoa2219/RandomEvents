@@ -34,6 +34,8 @@ namespace RandomEvents
             Server.RestartingRound += coreEventHandler.OnRoundRestart;
             Server.RoundStarted += coreEventHandler.OnRoundStart;
             Server.RoundStarted += coreEventHandler.OnRoundStart;
+
+            Player.Verified += coreEventHandler.OnPlayerVerified;
         }
 
         public override void OnDisabled()
@@ -52,6 +54,7 @@ namespace RandomEvents
             Server.RestartingRound -= coreEventHandler.OnRoundRestart;
             Server.RoundStarted -= coreEventHandler.OnRoundStart;
 
+            Player.Verified -= coreEventHandler.OnPlayerVerified;
 
             coreEventHandler = null;
         }
