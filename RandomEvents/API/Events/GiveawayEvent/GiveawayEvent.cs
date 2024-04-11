@@ -9,11 +9,11 @@ using Random = UnityEngine.Random;
 
 namespace RandomEvents.API.Events.GiveawayEvent;
 
-public class GiveawayEvent : IEvent
+public class GiveawayEvent : Event
 {
-    public string Name { get; } = "GiveawayEvent";
-    public string DisplayName { get; } = "기브어웨이";
-    public string Description { get; } = "1분마다 랜덤으로 아이템이 주어집니다.";
+    public override string Name { get; } = "GiveawayEvent";
+    public override string DisplayName { get; } = "기브어웨이";
+    public override string Description { get; } = "1분마다 랜덤으로 아이템이 주어집니다.";
 
     private ItemType GetRandomItem()
     {
@@ -44,17 +44,17 @@ public class GiveawayEvent : IEvent
 
     }
 
-    public void Run()
+    public override void Run()
     {
         Timing.RunCoroutine(GiveawayCoroutine());
     }
 
-    public void RegisterEvents()
+    public override void RegisterEvents()
     {
 
     }
 
-    public void UnregisterEvents()
+    public override void UnregisterEvents()
     {
 
     }

@@ -6,23 +6,23 @@ using Player = Exiled.Events.Handlers.Player;
 
 namespace RandomEvents.API.Events.InfAmmoEvent;
 
-public class InfAmmoEvent : IEvent
+public class InfAmmoEvent : Event
 {
-    public string Name { get; } = "InfAmmoEvent";
-    public string DisplayName { get; } = "무한 탄약";
-    public string Description { get; } = "총알이 무한으로 주어집니다.";
-    public void Run()
+    public override string Name { get; } = "InfAmmoEvent";
+    public override string DisplayName { get; } = "무한 탄약";
+    public override string Description { get; } = "총알이 무한으로 주어집니다.";
+    public override void Run()
     {
 
     }
 
-    public void RegisterEvents()
+    public override void RegisterEvents()
     {
         Player.Shooting += OnShooting;
         Player.UsingMicroHIDEnergy += OnUsingMicroHIDEnergy;
     }
 
-    public void UnregisterEvents()
+    public override void UnregisterEvents()
     {
         Player.Shooting -= OnShooting;
         Player.UsingMicroHIDEnergy -= OnUsingMicroHIDEnergy;

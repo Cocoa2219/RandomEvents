@@ -1,4 +1,6 @@
-﻿namespace RandomEvents.API.Interfaces;
+﻿using Exiled.API.Features;
+
+namespace RandomEvents.API.Interfaces;
 
 public interface IEvent
 {

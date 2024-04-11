@@ -6,32 +6,11 @@ using Player = Exiled.Events.Handlers.Player;
 
 namespace RandomEvents.API.Events.OutlawEvent;
 
-public class OutlawEvent: IEvent
+public class OutlawEvent: Event
 {
-    public void LogInfo(object message)
-    {
-        Log.Info($"({Name}) {message}");
-    }
-
-    public void LogDebug(object message)
-    {
-        Log.Debug($"({Name}) {message}");
-    }
-
-    public void LogWarn(object message)
-    {
-        Log.Warn($"({Name}) {message}");
-    }
-
-    public void LogError(object message)
-    {
-        Log.Error($"({Name}) {message}");
-    }
-
-
-    public string Name { get; } = "OutlawEvent";
-    public string DisplayName { get; } = "무법자";
-    public string Description { get; } = "스폰 시 무기가 한 정씩 추가로 랜덤으로 주어집니다.";
+    public override string Name { get; } = "OutlawEvent";
+    public override string DisplayName { get; } = "무법자";
+    public override string Description { get; } = "스폰 시 무기가 한 정씩 추가로 랜덤으로 주어집니다.";
 
     private OutlawEventHandler EventHandler { get; set; }
 
@@ -61,7 +40,7 @@ public class OutlawEvent: IEvent
         return gunsArray[Random.Range(0, gunsArray.Length)];
     }
 
-    public void Run()
+    public override void Run()
     {
         EventHandler = new OutlawEventHandler(this);
 
@@ -77,12 +56,12 @@ public class OutlawEvent: IEvent
         });
     }
 
-    public void RegisterEvents()
+    public override void RegisterEvents()
     {
         Player.ChangingRole += EventHandler.OnRoleChanging;
     }
 
-    public void UnregisterEvents()
+    public override void UnregisterEvents()
     {
         Player.ChangingRole -= EventHandler.OnRoleChanging;
     }

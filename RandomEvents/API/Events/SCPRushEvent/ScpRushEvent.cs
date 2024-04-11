@@ -8,11 +8,11 @@ using UnityEngine;
 
 namespace RandomEvents.API.Events.SCPRushEvent;
 
-public class ScpRushEvent : IEvent
+public class ScpRushEvent : Event
 {
-    public string Name { get; } = "ScpRushEvent";
-    public string DisplayName { get; } = "SCP 러쉬";
-    public string Description { get; } = "모든 SCP가 한 종류로 통일됩니다.";
+    public override string Name { get; } = "ScpRushEvent";
+    public override string DisplayName { get; } = "SCP 러쉬";
+    public override string Description { get; } = "모든 SCP가 한 종류로 통일됩니다.";
 
     private RoleTypeId GetRandomSCP()
     {
@@ -29,7 +29,7 @@ public class ScpRushEvent : IEvent
         return scps[Random.Range(0, scps.Length)];
     }
 
-    public void Run()
+    public override void Run()
     {
         var role = GetRandomSCP();
         Timing.CallDelayed(0.1f, () =>
@@ -46,12 +46,12 @@ public class ScpRushEvent : IEvent
         });
     }
 
-    public void RegisterEvents()
+    public override void RegisterEvents()
     {
 
     }
 
-    public void UnregisterEvents()
+    public override void UnregisterEvents()
     {
 
     }

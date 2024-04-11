@@ -10,11 +10,11 @@ using Random = UnityEngine.Random;
 
 namespace RandomEvents.API.Events.CollectorEvent;
 
-public class CollectorEvent : IEvent
+public class CollectorEvent : Event
 {
-    public string Name { get; } = "CollectorEvent";
-    public string DisplayName { get; } = "수집가";
-    public string Description { get; } = "랜덤한 SCP 아이템 1~3개를 들고 시작합니다.";
+    public override string Name { get; } = "CollectorEvent";
+    public override string DisplayName { get; } = "수집가";
+    public override string Description { get; } = "랜덤한 SCP 아이템 1~3개를 들고 시작합니다.";
 
     public ItemType GetRandomScpItem()
     {
@@ -32,7 +32,7 @@ public class CollectorEvent : IEvent
         return item.ToString().StartsWith("SCP");
     }
 
-    public void Run()
+    public override void Run()
     {
         Timing.CallDelayed(0.1f, () =>
         {
@@ -49,12 +49,12 @@ public class CollectorEvent : IEvent
         });
     }
 
-    public void RegisterEvents()
+    public override void RegisterEvents()
     {
         Exiled.Events.Handlers.Player.ChangingRole += OnRoleChanging;
     }
 
-    public void UnregisterEvents()
+    public override void UnregisterEvents()
     {
         Exiled.Events.Handlers.Player.ChangingRole -= OnRoleChanging;
     }

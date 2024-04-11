@@ -11,12 +11,12 @@ using RandomEvents.API.Interfaces;
 
 namespace RandomEvents.API.SpeedrunEvent;
 
-public class SpeedrunEvent : IEvent
+public class SpeedrunEvent : Event
 {
-    public string Name { get; } = "SpeedrunEvent";
-    public string DisplayName { get; } = "스피드런";
-    public string Description { get; } = "가장 먼저 탈출하는 사람이 승리합니다.";
-    public void Run()
+    public override string Name { get; } = "SpeedrunEvent";
+    public override string DisplayName { get; } = "스피드런";
+    public override string Description { get; } = "가장 먼저 탈출하는 사람이 승리합니다.";
+    public override void Run()
     {
         Round.IsLocked = true;
         Timing.CallDelayed(0.1f, () =>
@@ -75,12 +75,12 @@ public class SpeedrunEvent : IEvent
         }
     }
 
-    public void RegisterEvents()
+    public override void RegisterEvents()
     {
         Exiled.Events.Handlers.Player.Escaping += OnEscaping;
     }
 
-    public void UnregisterEvents()
+    public override void UnregisterEvents()
     {
         Exiled.Events.Handlers.Player.Escaping -= OnEscaping;
     }

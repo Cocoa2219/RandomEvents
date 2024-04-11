@@ -5,28 +5,43 @@ using Exiled.API.Features;
 
 namespace RandomEvents.Commands;
 
+// [CommandHandler(typeof(ClientCommandHandler))]
 public class Reroll // : ICommand
 {
-    public void Execute(ArraySegment<string> arguments, ICommandSender sender)
+    public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
     {
+        var player = Player.Get(sender as CommandSender);
+
+        if (player == null)
+        {
+            response = "플레이어를 찾을 수 없습니다.";
+            return false;
+        }
+
+        if (RandomEvents.Instance.coreEventHandler.isRerolled)
+        {
+            response = "이미 재추첨을 진행했습니다.";
+            return false;
+        }
+
         if (RandomEvents.Instance.coreEventHandler.isRerolling)
         {
+            var success = RandomEvents.Instance.coreEventHandler.RerollVote(player);
 
+            response = success ? "재추첨 투표에 찬성했습니다." : "재추첨 투표에 반대했습니다.";
+            return true;
         }
-        else
+
+        if (RandomEvents.Instance.coreEventHandler.isEventRunning || Round.IsStarted)
         {
-            if (RandomEvents.Instance.coreEventHandler.isEventRunning || Round.IsStarted)
-            {
-                return;
-            }
-
-            RandomEvents.Instance.coreEventHandler.isRerolling = true;
-            RandomEvents.Instance.coreEventHandler.rerollPlayers = Player.List.Count / 2;
-
-            Round.IsLobbyLocked = true;
-
-            return;
+            response = "라운드가 시작되었습니다.";
+            return false;
         }
+
+        RandomEvents.Instance.coreEventHandler.StartRerollVote(player);
+
+        response = "재추첨 투표를 시작했습니다.";
+        return true;
     }
 
     public string Command { get; } = "reroll";

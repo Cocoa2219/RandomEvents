@@ -10,11 +10,11 @@ using Random = UnityEngine.Random;
 
 namespace RandomEvents.API.WhoAmIEvent;
 
-public class WhoAmIEvent : IEvent
+public class WhoAmIEvent : Event
 {
-    public string Name { get; } = "WhoAmIEvent";
-    public string DisplayName { get; } = "나는 누구?";
-    public string Description { get; } = "1분마다 진영이 바뀝니다.";
+    public override string Name { get; } = "WhoAmIEvent";
+    public override string DisplayName { get; } = "나는 누구?";
+    public override string Description { get; } = "1분마다 진영이 바뀝니다.";
 
     private RoleTypeId GetRandomRole()
     {
@@ -47,17 +47,17 @@ public class WhoAmIEvent : IEvent
         }
     }
 
-    public void Run()
+    public override void Run()
     {
         Timing.RunCoroutine(WhoAmICoroutine());
     }
 
-    public void RegisterEvents()
+    public override void RegisterEvents()
     {
 
     }
 
-    public void UnregisterEvents()
+    public override void UnregisterEvents()
     {
 
     }

@@ -14,7 +14,7 @@ namespace RandomEvents
         public override string Prefix => "RandomEvents";
         public override Version Version { get; } = new(1, 0, 0);
 
-        public CoreEventHandler coreEventHandler;
+        public CoreEventHandler coreEventHandler { get; private set; }
 
         public override void OnEnabled()
         {
@@ -36,6 +36,7 @@ namespace RandomEvents
             Server.RoundStarted += coreEventHandler.OnRoundStart;
 
             Player.Verified += coreEventHandler.OnPlayerVerified;
+            Player.Hurting += coreEventHandler.OnPlayerHurting;
         }
 
         public override void OnDisabled()
@@ -55,6 +56,7 @@ namespace RandomEvents
             Server.RoundStarted -= coreEventHandler.OnRoundStart;
 
             Player.Verified -= coreEventHandler.OnPlayerVerified;
+            Player.Hurting -= coreEventHandler.OnPlayerHurting;
 
             coreEventHandler = null;
         }
