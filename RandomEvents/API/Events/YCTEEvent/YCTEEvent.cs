@@ -9,7 +9,7 @@ public class YCTEEvent : Event
 {
     public override string Name { get; } = "YCTEEvent";
     public override string DisplayName { get; } = "어제의 동지는 오늘의 적";
-    public override string Description { get; } = "아군 공격이 허용됩니다.";
+    public override string Description { get; } = "아군 공격이 허용됩니다. - 현재 공사 중...";
 
     private Dictionary<Exiled.API.Features.Player, int> FFCount = new();
     private Dictionary<Exiled.API.Features.Player, int> BadFFCount = new();
@@ -48,7 +48,7 @@ public class YCTEEvent : Event
                 var atk = BadFFCount[ev.Attacker] / 4 > 1 ? 1 : BadFFCount[ev.Attacker] / 4;
                 var def = BadFFCount[ev.Attacker] / 4 > 1 ? 1 : BadFFCount[ev.Attacker] / 4;
 
-                RandomEvents.Instance.coreEventHandler.SetStats(ev.Attacker, new PlayerStatus(atk, -def, 0));
+                // RandomEvents.Instance.coreEventHandler.SetStats(ev.Attacker, new PlayerStatus(atk, -def, 0));
             }
         }
     }
@@ -64,5 +64,7 @@ public class YCTEEvent : Event
         {
             FFCount.Remove(ev.Player);
         }
+
+        // RandomEvents.Instance.coreEventHandler.SetStats(ev.Player, new PlayerStatus(0, 0, 0));
     }
 }

@@ -23,7 +23,7 @@
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <PostBuildEvent>xcopy /y /s /i /d "C:\Users\PC\Documents\RandomEvents\RandomEvents\bin\Debug\RandomEvents.dll" "C:\Users\PC\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>
+        <PostBuildEvent>xcopy /y /s /i /d "C:\Users\user\Documents\RandomEvents\RandomEvents\bin\Debug\RandomEvents.dll" "C:\Users\user\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +36,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="API\Event.cs" />
+        <Compile Include="API\Events\AccumulateEvent\AccumulateEvent.cs" />
         <Compile Include="API\Events\BlackoutEvent\BlackoutEvent.cs" />
         <Compile Include="API\Events\ChupaChupsEvent\ChupaChupsEvent.cs" />
         <Compile Include="API\Events\CollectorEvent\CollectorEvent.cs" />
@@ -50,6 +51,8 @@
         <Compile Include="API\Events\SCPRushEvent\ScpRushEvent.cs" />
         <Compile Include="API\Events\SMBEvent\SMBEvent.cs" />
         <Compile Include="API\Events\SMBEvent\SMBEventHandler.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Enums\Abilities.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\SpecialAbilityEvent.cs" />
         <Compile Include="API\Events\SpeedrunEvent\SpeedrunEvent.cs" />
         <Compile Include="API\Events\StartingItemEvent\StartingItemEvent.cs" />
         <Compile Include="API\Events\TrickOrTreatEvent\TrickOrTreatEvent.cs" />

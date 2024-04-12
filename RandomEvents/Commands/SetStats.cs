@@ -37,7 +37,7 @@ public class SetStats : ICommand
             return false;
         }
 
-        RandomEvents.Instance.coreEventHandler.PlayerStatuses[player] = new PlayerStatus(atk, def, miss);
+        // RandomEvents.Instance.coreEventHandler.PlayerStatuses[player] = new PlayerStatus(atk, def, miss);
         response = $"{player.CustomName}의 스탯이 ATK : {atk} / DEF : {def} / Miss : {miss}로 설정되었습니다.";
         return true;
     }

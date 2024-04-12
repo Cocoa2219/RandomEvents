@@ -36,7 +36,7 @@ namespace RandomEvents
             Server.RoundStarted += coreEventHandler.OnRoundStart;
 
             Player.Verified += coreEventHandler.OnPlayerVerified;
-            Player.Hurting += coreEventHandler.OnPlayerHurting;
+            // Player.Hurting += coreEventHandler.OnPlayerHurting;
         }
 
         public override void OnDisabled()
@@ -56,7 +56,7 @@ namespace RandomEvents
             Server.RoundStarted -= coreEventHandler.OnRoundStart;
 
             Player.Verified -= coreEventHandler.OnPlayerVerified;
-            Player.Hurting -= coreEventHandler.OnPlayerHurting;
+            // Player.Hurting -= coreEventHandler.OnPlayerHurting;
 
             coreEventHandler = null;
         }

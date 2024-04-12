@@ -23,10 +23,10 @@ public class BlackoutEvent : Event
 
         var emergencyRooms = new Dictionary<ZoneType, int>
         {
-            { ZoneType.Entrance, Random.Range(1, 3) },
-            { ZoneType.LightContainment, Random.Range(1, 3) },
-            { ZoneType.HeavyContainment, Random.Range(1, 3) },
-            { ZoneType.Surface, Random.Range(1, 3) }
+            { ZoneType.Entrance, Random.Range(2, 3) },
+            { ZoneType.LightContainment, Random.Range(2, 3) },
+            { ZoneType.HeavyContainment, Random.Range(2, 3) },
+            { ZoneType.Surface, 0 }
         };
 
         foreach (var room in emergencyRooms)

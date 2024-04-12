@@ -22,7 +22,7 @@ public class CoreEventHandler(RandomEvents plugin)
 
     private Dictionary<Event, HashSet<Player>> RandomEvents { get; set; } = new();
 
-    public Dictionary<Player, PlayerStatus> PlayerStatuses { get; set; } = new();
+    // public Dictionary<Player, PlayerStatus> PlayerStatuses { get; set; } = new();
 
     public bool isEventRunning;
 
@@ -36,10 +36,10 @@ public class CoreEventHandler(RandomEvents plugin)
 
     private Player rerollPlayer;
 
-    public void SetStats(Player player, PlayerStatus stats)
-    {
-        PlayerStatuses[player] = stats;
-    }
+    // public void SetStats(Player player, PlayerStatus stats)
+    // {
+    //     PlayerStatuses[player] = stats;
+    // }
 
     public void StartRerollVote(Player player)
     {
@@ -200,6 +200,7 @@ public class CoreEventHandler(RandomEvents plugin)
 
         isEventRunning = false;
         RandomEvents.Clear();
+        // PlayerStatuses.Clear();
 
         isTestRunning = false;
     }
@@ -315,7 +316,7 @@ public class CoreEventHandler(RandomEvents plugin)
     {
         rerollPlayers = Player.List.Count / 2;
 
-        PlayerStatuses.TryAdd(ev.Player, new PlayerStatus(0, 0, 0));
+        // PlayerStatuses.TryAdd(ev.Player, new PlayerStatus(0, 0, 0));
 
         RefreshRandomEventHint();
 
@@ -325,15 +326,15 @@ public class CoreEventHandler(RandomEvents plugin)
         }
     }
 
-    public void OnPlayerHurting(HurtingEventArgs ev)
-    {
-        if (ev.Attacker == null || ev.Player == null) return;
-
-        PlayerStatuses.TryAdd(ev.Attacker, new PlayerStatus(0, 0, 0));
-        PlayerStatuses.TryAdd(ev.Player, new PlayerStatus(0, 0, 0));
-
-        var damage = PlayerStatus.CalculateDamage(PlayerStatuses[ev.Attacker], PlayerStatuses[ev.Player], ev.Amount);
-
-        ev.Amount = damage;
-    }
+    // public void OnPlayerHurting(HurtingEventArgs ev)
+    // {
+    //     if (ev.Attacker == null || ev.Player == null) return;
+    //
+    //     PlayerStatuses.TryAdd(ev.Attacker, new PlayerStatus(0, 0, 0));
+    //     PlayerStatuses.TryAdd(ev.Player, new PlayerStatus(0, 0, 0));
+    //
+    //     var damage = PlayerStatus.CalculateDamage(PlayerStatuses[ev.Attacker], PlayerStatuses[ev.Player], ev.Amount);
+    //
+    //     ev.Amount = damage;
+    // }
 }

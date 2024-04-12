@@ -15,7 +15,7 @@ namespace RandomEvents
         public bool IsEnabled { get; set; } = true;
 
         [Description("디버그 모드를 켭니다. (잡다한 로그가 출력됩니다.)")]
-        public bool Debug { get; set; } = false;
+        public bool Debug { get; set; } = true;
 
         [Description("이벤트의 설정을 제어합니다.")]
         public Dictionary<string, IEventConfig> EventConfigs { get; set; } = Assembly.GetExecutingAssembly().GetTypes()
