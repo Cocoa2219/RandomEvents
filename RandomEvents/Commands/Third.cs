@@ -18,7 +18,7 @@ public class Third : ICommand
             return false;
         }
 
-        RandomEvents.Instance.coreEventHandler.Vote(2, player);
+        RandomEvents.Instance.CoreEventHandler.Vote(2, player);
         response = "3번째 이벤트에 투표했습니다.";
         return true;
     }

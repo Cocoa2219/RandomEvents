@@ -1,7 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 
-public enum Abilities
+public enum AbilityType
 {
     // Human abilities
     RARE_SWIFTNESS, // 이동 속도 +15%
@@ -80,5 +80,12 @@ public enum Abilities
     SCP_173_DARKNESS, // 인간이 바라볼 시 주변 구역 정전 (10초 간)
     SCP_173_INTERCHANGE, // HP가 감소할 수록 방어력 증가 (최대 50%)
     SCP_173_TELEPORT, // 적 처치 시 주변 2m 내 적 전원에게 200 피해
-    SCP_173_FRAGMENTATION // HS 파괴 시 주변 구역 정전 (15초 간), 주변 10m 내 적 전원에게 최근 30초 간 누적된 피해에 비례한 피해와 실명 효과 적용
+    SCP_173_FRAGMENTATION, // HS 파괴 시 주변 구역 정전 (15초 간), 주변 10m 내 적 전원에게 최근 30초 간 누적된 피해에 비례한 피해와 실명 효과 적용
+
+    // SCP-939 abilities
+    SCP_939_LIGHTER, // 이동 속도 +20%
+    SCP_939_ANGER, // 피격 시 공격력 +5% (5초 간, 최대 100%) 이동 속도 +5%. (5초 간, 최대 50%)
+    SCP_939_CONSUME, // 적을 처치할 시 스테미나 35% 회복.
+    SCP_939_RUMBLE, // 도약 사용 시 착지 지점에 지진을 일으켜 주변 10m 내 적 전원에게 40 피해 및 이동 속도 -30%. (3초 간)
+    SCP_939_PANIC,// 적 처치 시 주변 10m 내 적 전원에게 기억 소거 효과 부여. (5초 간)
 }

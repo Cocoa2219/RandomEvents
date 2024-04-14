@@ -18,27 +18,27 @@ public class Reroll // : ICommand
             return false;
         }
 
-        if (RandomEvents.Instance.coreEventHandler.isRerolled)
+        if (RandomEvents.Instance.CoreEventHandler.isRerolled)
         {
             response = "이미 재추첨을 진행했습니다.";
             return false;
         }
 
-        if (RandomEvents.Instance.coreEventHandler.isRerolling)
+        if (RandomEvents.Instance.CoreEventHandler.isRerolling)
         {
-            var success = RandomEvents.Instance.coreEventHandler.RerollVote(player);
+            var success = RandomEvents.Instance.CoreEventHandler.RerollVote(player);
 
             response = success ? "재추첨 투표에 찬성했습니다." : "재추첨 투표에 반대했습니다.";
             return true;
         }
 
-        if (RandomEvents.Instance.coreEventHandler.isEventRunning || Round.IsStarted)
+        if (RandomEvents.Instance.CoreEventHandler.isEventRunning || Round.IsStarted)
         {
             response = "라운드가 시작되었습니다.";
             return false;
         }
 
-        RandomEvents.Instance.coreEventHandler.StartRerollVote(player);
+        RandomEvents.Instance.CoreEventHandler.StartRerollVote(player);
 
         response = "재추첨 투표를 시작했습니다.";
         return true;

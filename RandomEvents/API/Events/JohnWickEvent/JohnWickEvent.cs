@@ -1,7 +1,10 @@
 ﻿using Exiled.API.Features.DamageHandlers;
 using Exiled.Events.EventArgs.Player;
 using Exiled.Events.Handlers;
+using InventorySystem.Items.Firearms;
+using PlayerRoles.PlayableScps.Scp939;
 using UnityEngine.UIElements;
+using Firearm = Exiled.API.Features.Items.Firearm;
 using FirearmDamageHandler = PlayerStatsSystem.FirearmDamageHandler;
 
 namespace RandomEvents.API.Events.JohnWickEvent;

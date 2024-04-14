@@ -18,7 +18,7 @@ public class Second : ICommand
             return false;
         }
 
-        RandomEvents.Instance.coreEventHandler.Vote(1, player);
+        RandomEvents.Instance.CoreEventHandler.Vote(1, player);
         response = "2번째 이벤트에 투표했습니다.";
         return true;
     }

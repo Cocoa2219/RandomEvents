@@ -34,7 +34,7 @@ public class RandomEventsCommand : ICommand
                 response = "Made by Cocoa (@cocoa_1.19)";
                 return true;
             case "list":
-                var text = RandomEvents.Instance.coreEventHandler.Events.Aggregate("이벤트 목록 : \n",
+                var text = RandomEvents.Instance.CoreEventHandler.Events.Aggregate("이벤트 목록 : \n",
                     (current, @event) => current + $"{@event.DisplayName} ({@event.Name}) - {@event.Description}\n");
                 response = text;
                 return true;
@@ -46,7 +46,7 @@ public class RandomEventsCommand : ICommand
                 }
 
                 var selEvent =
-                    RandomEvents.Instance.coreEventHandler.Events.FirstOrDefault(x => x.Name.ToLower() == arguments.At(1).ToLower());
+                    RandomEvents.Instance.CoreEventHandler.Events.FirstOrDefault(x => x.Name.ToLower() == arguments.At(1).ToLower());
 
                 if (selEvent is null)
                 {
@@ -54,9 +54,9 @@ public class RandomEventsCommand : ICommand
                     return false;
                 }
 
-                RandomEvents.Instance.coreEventHandler.isTestRunning = true;
+                RandomEvents.Instance.CoreEventHandler.isTestRunning = true;
 
-                if (RandomEvents.Instance.coreEventHandler.RunEvent(selEvent))
+                if (RandomEvents.Instance.CoreEventHandler.RunEvent(selEvent))
                 {
                     response = $"{arguments.At(1)} 이벤트가 실행되었습니다.";
                     return true;

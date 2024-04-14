@@ -14,7 +14,7 @@ namespace RandomEvents
         public override string Prefix => "RandomEvents";
         public override Version Version { get; } = new(1, 0, 0);
 
-        public CoreEventHandler coreEventHandler { get; private set; }
+        public CoreEventHandler CoreEventHandler { get; private set; }
 
         public override void OnEnabled()
         {
@@ -28,14 +28,14 @@ namespace RandomEvents
 
         public void RegisterEvents()
         {
-            coreEventHandler = new CoreEventHandler(this);
+            CoreEventHandler = new CoreEventHandler(this);
 
-            Server.WaitingForPlayers += coreEventHandler.OnWaitingForPlayers;
-            Server.RestartingRound += coreEventHandler.OnRoundRestart;
-            Server.RoundStarted += coreEventHandler.OnRoundStart;
-            Server.RoundStarted += coreEventHandler.OnRoundStart;
+            Server.WaitingForPlayers += CoreEventHandler.OnWaitingForPlayers;
+            Server.RestartingRound += CoreEventHandler.OnRoundRestart;
+            Server.RoundStarted += CoreEventHandler.OnRoundStart;
+            Server.RoundStarted += CoreEventHandler.OnRoundStart;
 
-            Player.Verified += coreEventHandler.OnPlayerVerified;
+            Player.Verified += CoreEventHandler.OnPlayerVerified;
             // Player.Hurting += coreEventHandler.OnPlayerHurting;
         }
 
@@ -51,14 +51,14 @@ namespace RandomEvents
 
         public void UnregisterEvents()
         {
-            Server.WaitingForPlayers -= coreEventHandler.OnWaitingForPlayers;
-            Server.RestartingRound -= coreEventHandler.OnRoundRestart;
-            Server.RoundStarted -= coreEventHandler.OnRoundStart;
+            Server.WaitingForPlayers -= CoreEventHandler.OnWaitingForPlayers;
+            Server.RestartingRound -= CoreEventHandler.OnRoundRestart;
+            Server.RoundStarted -= CoreEventHandler.OnRoundStart;
 
-            Player.Verified -= coreEventHandler.OnPlayerVerified;
+            Player.Verified -= CoreEventHandler.OnPlayerVerified;
             // Player.Hurting -= coreEventHandler.OnPlayerHurting;
 
-            coreEventHandler = null;
+            CoreEventHandler = null;
         }
     }
 }

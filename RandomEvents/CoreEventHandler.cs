@@ -18,7 +18,7 @@ public class CoreEventHandler(RandomEvents plugin)
 
     public List<Event> Events { get; set; } = [];
 
-    private Event CurrentEvent { get; set; }
+    public Event CurrentEvent { get; private set; }
 
     private Dictionary<Event, HashSet<Player>> RandomEvents { get; set; } = new();
 

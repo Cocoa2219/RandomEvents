@@ -30,7 +30,7 @@ public class PlayerStatus(float attack, float defense, float miss)
     }
 
     public override string ToString()
-    {
+    {   
         return $"Attack : {Attack} / Defense : {Defense} / Miss : {Miss}";
     }
 
