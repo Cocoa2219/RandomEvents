@@ -51,7 +51,7 @@ public class CriticalHit : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "치명타 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "치명타";
     public string Description { get; } = "적을 공격할 시 15% 확률로 20초 간 적의 방어력이 -20%가 됩니다.";
     public SpecialAbilityEvent Event { get; set; }
 

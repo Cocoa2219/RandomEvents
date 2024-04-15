@@ -35,7 +35,7 @@ public class Regeneration : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "재생 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "재생";
     public string Description { get; } = "체력이 1초당 전체 체력의 2%를 회복합니다.";
     public SpecialAbilityEvent Event { get; set; }
 

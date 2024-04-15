@@ -24,7 +24,7 @@ public class Enhancement : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "강화 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "강화";
     public string Description { get; } = "모든 데미지가 20% 증가합니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

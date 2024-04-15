@@ -49,7 +49,7 @@ public class Alchemy : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Legendary;
-    public string DisplayName { get; } = "연금술 <color=#4dab99>(전설)</color>";
+    public string DisplayName { get; } = "연금술";
     public string Description { get; } = "아이템을 버릴 시 랜덤한 아이템으로 변경됩니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

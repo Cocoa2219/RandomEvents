@@ -57,7 +57,7 @@ public class Engineer : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "기술자 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "기술자";
     public string Description { get; } = "잠긴 문을 연속으로 5회 상호작용할 경우 문이 열립니다.";
     public SpecialAbilityEvent Event { get; set; }
 

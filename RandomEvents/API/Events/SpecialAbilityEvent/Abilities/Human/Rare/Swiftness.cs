@@ -20,7 +20,7 @@ public class Swiftness : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "신속 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "신속";
     public string Description { get; } = "이동 속도가 15% 증가합니다.";
     public SpecialAbilityEvent Event { get; set; }
 

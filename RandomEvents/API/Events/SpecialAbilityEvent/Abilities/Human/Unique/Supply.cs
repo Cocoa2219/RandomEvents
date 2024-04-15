@@ -41,7 +41,7 @@ public class Supply : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Unique;
-    public string DisplayName { get; } = "보급 <color=#FFDC41>(유니크)</color>";
+    public string DisplayName { get; } = "보급";
     public string Description { get; } = "120초마다 고가치 아이템을 1개 획득합니다.";
     public SpecialAbilityEvent Event { get; set; }
 

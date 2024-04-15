@@ -24,7 +24,7 @@ public class Resistance : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "저항 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "저항";
     public string Description { get; } = "모든 피해량이 30% 감소합니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

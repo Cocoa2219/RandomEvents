@@ -43,7 +43,7 @@ public class SpecialRemedy : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Scp049;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Epic;
-    public string DisplayName { get; } = "특별한 치료제 <color=#9A6DD7>(에픽)</color>";
+    public string DisplayName { get; } = "특별한 치료제";
     public string Description { get; } = "HP가 감소할 수록 이동 속도가 증가합니다.";
     public SpecialAbilityEvent Event { get; set; }
 

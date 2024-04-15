@@ -44,7 +44,7 @@ public class Shield : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Unique;
-    public string DisplayName { get; } = "쉴드 <color=#FFDC41>(유니크)</color>";
+    public string DisplayName { get; } = "쉴드";
     public string Description { get; } = "보유한 아이템 수 1개 당 방어력를 7.5% 증가시킵니다.";
     public SpecialAbilityEvent Event { get; set; }
 

@@ -40,7 +40,7 @@ public class AmmoBox : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Epic;
-    public string DisplayName { get; } = "탄약 상자 <color=#9A6DD7>(에픽)</color>";
+    public string DisplayName { get; } = "탄약 상자";
     public string Description { get; } = "10% 확률로 탄약을 소모하지 않습니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

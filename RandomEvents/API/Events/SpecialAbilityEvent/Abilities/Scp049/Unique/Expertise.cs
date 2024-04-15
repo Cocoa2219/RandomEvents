@@ -26,6 +26,7 @@ public class Expertise : IAbility
     private void OnAttacking(AttackingEventArgs ev)
     {
         if (ev.Player != Player) return;
+        ev.Target.DisableEffect(EffectType.CardiacArrest);
         ev.Target.Kill(new Scp049DamageHandler(ev.Player.ReferenceHub, -1f, Scp049DamageHandler.AttackType.Instakill));
     }
 
@@ -33,7 +34,7 @@ public class Expertise : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Scp049;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Unique;
-    public string DisplayName { get; } = "노련함 <color=#FF0000>(유니크)</color>";
+    public string DisplayName { get; } = "노련함";
     public string Description { get; } = "공격 시 대상을 즉시 처치합니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

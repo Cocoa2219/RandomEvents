@@ -36,7 +36,7 @@ public class GoldenBell : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Special;
-    public string DisplayName { get; } = "금강불괴 <color=#e2559d>(스페셜)</color>";
+    public string DisplayName { get; } = "금강불괴";
     public string Description { get; } = "받는 피해 최대치가 25로 고정됩니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

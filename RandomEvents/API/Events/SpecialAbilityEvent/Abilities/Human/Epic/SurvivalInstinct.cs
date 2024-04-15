@@ -102,7 +102,7 @@ public class SurvivalInstinct : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Epic;
-    public string DisplayName { get; } = "생존 본능 <color=#9A6DD7>(에픽)</color>";
+    public string DisplayName { get; } = "생존 본능";
     public string Description { get; } = "사망에 이르는 피해를 입었을 때 HP 1을 남기고 랜덤한 장소로 텔레포트됩니다.";
     public SpecialAbilityEvent Event { get; set; }
 

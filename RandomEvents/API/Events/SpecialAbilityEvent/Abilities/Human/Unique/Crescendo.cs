@@ -56,7 +56,7 @@ public class Crescendo : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Unique;
-    public string DisplayName { get; } = "크레센도 <color=#FFDC41>(유니크)</color>";
+    public string DisplayName { get; } = "크레센도";
     public string Description { get; } = "적을 연속으로 타격할 수록 공격력이 증가합니다.";
     public SpecialAbilityEvent Event { get; set; }
 

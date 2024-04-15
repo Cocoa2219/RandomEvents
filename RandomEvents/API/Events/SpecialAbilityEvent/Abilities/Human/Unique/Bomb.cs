@@ -51,7 +51,7 @@ public class Bomb : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Unique;
-    public string DisplayName { get; } = "폭탄 <color=#FFDC41>(유니크)</color>";
+    public string DisplayName { get; } = "폭탄";
     public string Description { get; } = "사망 3초 후 자폭을 통해 주변의 모든 플레이어를 죽입니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

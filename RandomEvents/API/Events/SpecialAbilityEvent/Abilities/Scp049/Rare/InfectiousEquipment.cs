@@ -37,7 +37,7 @@ public class InfectiousEquipment : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Scp049;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "감염 장비 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "감염 장비";
     public string Description { get; } = "공격 시 대상에게 랜덤한 디버프를 10초 간 추가로 부여합니다.";
     public SpecialAbilityEvent Event { get; set; }
 

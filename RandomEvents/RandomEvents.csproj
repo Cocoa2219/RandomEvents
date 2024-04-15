@@ -23,7 +23,7 @@
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <PostBuildEvent>xcopy /y /s /i /d "C:\Users\user\Documents\RandomEvents\RandomEvents\bin\Debug\RandomEvents.dll" "C:\Users\user\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>
+        <PostBuildEvent>xcopy /y /s /i /d "C:\Users\PC\Documents\RandomEvents\RandomEvents\bin\Debug\RandomEvents.dll" "C:\Users\PC\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -78,9 +78,34 @@
         <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Human\Unique\Shield.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Human\Unique\Supply.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Human\Unique\SurvivalExpert.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp0492\Epic\Ripping.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp0492\Legendary\Undead.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp0492\Rare\TailBite.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp0492\Special\DoctorsEducation.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp0492\Unique\Awakening.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp049\Epic\SpecialRemedy.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp049\Legendary\Designation.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp049\Rare\InfectiousEquipment.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp049\Special\Plague.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp049\Unique\Expertise.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp079\Epic\Experience.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp079\Legendary\Almighty.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp079\Rare\CpuUpgrade.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp079\Special\PowerOverwhelming.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp079\Unique\PowerUpgrade.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp096\Epic\MotionEnergy.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp096\Legendary\Trauma.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp096\Rare\BloodLust.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp096\Special\Impenetrable.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp096\Unique\Perception.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp106\Epic\Pursuit.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp106\Legendary\Digestion.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp106\Rare\IronSkin.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp106\Special\PhaseShift.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp106\Unique\Efficiency.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp173\Epic\Darkness.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp173\Rare\ToxicSubstance.cs" />
+        <Compile Include="API\Events\SpecialAbilityEvent\Abilities\Scp173\Unique\Interchange.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Commands\ForceAbility.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Enums\AbilityRole.cs" />
         <Compile Include="API\Events\SpecialAbilityEvent\Enums\AbilityType.cs" />
@@ -512,6 +537,8 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="API\Enums\" />
+      <Folder Include="API\Events\SpecialAbilityEvent\Abilities\Scp173\Legendary\" />
+      <Folder Include="API\Events\SpecialAbilityEvent\Abilities\Scp173\Special\" />
     </ItemGroup>
     <ItemGroup>
       <Content Include=".gitignore" />

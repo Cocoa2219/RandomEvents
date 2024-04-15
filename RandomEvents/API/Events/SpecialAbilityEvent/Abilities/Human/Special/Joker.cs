@@ -73,7 +73,7 @@ public class Joker : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Special;
-    public string DisplayName { get; } = "조커 <color=#e2559d>(스페셜)</color>";
+    public string DisplayName { get; } = "조커";
     public string Description { get; } = "시작 40초 이후 다음 능력 중 1개를 부여합니다.";
     public SpecialAbilityEvent Event { get; set; }
 

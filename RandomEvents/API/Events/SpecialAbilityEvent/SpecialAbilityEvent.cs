@@ -92,7 +92,10 @@ public class SpecialAbilityEvent : Event
         if (ev.NewRole is RoleTypeId.None or RoleTypeId.Spectator or RoleTypeId.Overwatch or RoleTypeId.Filmmaker)
             return;
 
-        GiveAbility(ev.Player);
+        Timing.CallDelayed(.1f, () =>
+        {
+            GiveAbility(ev.Player);
+        });
     }
 
     private void OnRespawningTeam(RespawningTeamEventArgs ev)
@@ -108,6 +111,7 @@ public class SpecialAbilityEvent : Event
 
     private void GiveAbility(Player player)
     {
+        LogDebug($"Giving ability to {player.CustomName}...");
         if (Abilities.ContainsKey(player))
         {
             Abilities[player].UnregisterEvents();
@@ -116,6 +120,8 @@ public class SpecialAbilityEvent : Event
 
         var rarity = PickRarity();
         var role = GetRole(player.Role);
+
+        LogDebug($"Rarity: {rarity}, Role: {role}");
 
         if (RoleAbilities.TryGetValue(role, out var roleAbility))
         {
@@ -126,6 +132,8 @@ public class SpecialAbilityEvent : Event
                 Abilities[player] = (IAbility)ability.Clone();
                 Abilities[player].Player = player;
                 Abilities[player].Event = this;
+
+                LogDebug($"{player.CustomName} has been given {ability.DisplayName} ({ability.Type})");
 
                 if (BcCoroutines.TryGetValue(player, out var handle) && handle.IsRunning)
                 {
@@ -139,6 +147,7 @@ public class SpecialAbilityEvent : Event
 
     public void GiveAbility(Player player, AbilityType type)
     {
+        LogDebug($"Giving ability to {player.CustomName}...");
         if (Abilities.ContainsKey(player))
         {
             Abilities[player].UnregisterEvents();
@@ -152,6 +161,8 @@ public class SpecialAbilityEvent : Event
         Abilities[player] = (IAbility)ability.Clone();
         Abilities[player].Player = player;
         Abilities[player].Event = this;
+
+        LogDebug($"{player.CustomName} has been given {ability.DisplayName} ({ability.Type})");
 
         if (BcCoroutines.TryGetValue(player, out var handle) && handle.IsRunning)
         {
@@ -174,7 +185,7 @@ public class SpecialAbilityEvent : Event
         yield return Timing.WaitForSeconds(4f);
 
         Abilities[player].RegisterEvents();
-        player.Broadcast(5, @$"<b><size=35><cspace=6px>{Abilities[player].DisplayName}</b>\n<size=26>{Abilities[player].Description}</size></cspace>", Broadcast.BroadcastFlags.Normal, true);
+        player.Broadcast(5, @$"<b><size=35><cspace=6px>{Abilities[player].DisplayName} {GetRarityString(Abilities[player].Rarity)}</b>\n<size=26>{Abilities[player].Description}</size></cspace>", Broadcast.BroadcastFlags.Normal, true);
     }
 
     private string GetRandomHexColor()
@@ -197,10 +208,9 @@ public class SpecialAbilityEvent : Event
         Special
     }
 
-    public Rarity PickRarity()
+    private Rarity PickRarity()
     {
         var randomNumber = Random.value;
-        return Rarity.Rare;
         return randomNumber switch
         {
             < 0.396f => Rarity.Rare,
@@ -235,6 +245,19 @@ public class SpecialAbilityEvent : Event
             RoleTypeId.ChaosMarauder => AbilityRole.Human,
             RoleTypeId.ChaosRepressor => AbilityRole.Human,
             _ => AbilityRole.None
+        };
+    }
+
+    public string GetRarityString(Rarity rarity)
+    {
+        return rarity switch
+        {
+            Rarity.Rare => "<color=#529CCA>(레어)</color>",
+            Rarity.Epic => "<color=#9a6dd7>(에픽)</color>",
+            Rarity.Unique => "<color=#ffdc41>(유니크)</color>",
+            Rarity.Legendary => "<color=#4DAB8D>(레전더리)</color>",
+            Rarity.Special => "<color=#E24D7B>(스페셜)</color>",
+            _ => "<color=#529CCA>(레어)</color>"
         };
     }
 

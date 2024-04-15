@@ -25,7 +25,7 @@ public class Shadow : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Legendary;
-    public string DisplayName { get; } = "그림자 <color=#4dab99>(전설)</color>";
+    public string DisplayName { get; } = "그림자";
     public string Description { get; } = "은신입니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

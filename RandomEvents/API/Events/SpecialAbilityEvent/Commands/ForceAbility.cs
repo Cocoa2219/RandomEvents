@@ -35,9 +35,8 @@ public class ForceAbility : ICommand
                 sb.AppendLine("<color=#ffffff>능력 목록:</color>");
                 foreach (var ability in speicalAbilityEvent.AbilitiesList)
                 {
-                    sb.AppendLine($"<color=#ffffff> - {ability.DisplayName} ({ability.Type.ToString()})</color>");
+                    sb.AppendLine($"<color=#ffffff> - {ability.DisplayName} {speicalAbilityEvent.GetRarityString(ability.Rarity)} ({ability.Type.ToString()})</color>");
                     sb.AppendLine($"<color=#ffffff>   {ability.Description}</color>");
-                    sb.AppendLine();
                 }
 
                 response = sb.ToString();

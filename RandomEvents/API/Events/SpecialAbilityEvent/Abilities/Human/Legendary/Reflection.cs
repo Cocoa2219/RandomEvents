@@ -37,7 +37,7 @@ public class Reflection : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Legendary;
-    public string DisplayName { get; } = "반사 <color=#4dab99>(전설)</color>";
+    public string DisplayName { get; } = "반사";
     public string Description { get; } = "공격을 받을 시 공격자에게 최대 100의 데미지를 반사합니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

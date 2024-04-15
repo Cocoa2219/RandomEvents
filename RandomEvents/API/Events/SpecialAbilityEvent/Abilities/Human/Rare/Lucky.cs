@@ -60,7 +60,7 @@ public class Lucky : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "행운아 <color=#529CCA>(레어)</color>";
+    public string DisplayName { get; } = "행운아";
     public string Description { get; } = "문과 락커 상호작용 시 5% 확률로 카드키 없이 오픈합니다.";
     public SpecialAbilityEvent Event { get; set; } = null;
 }

@@ -35,7 +35,7 @@ public class HardCounter : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Legendary;
-    public string DisplayName { get; } = "하드 카운터 <color=#4dab99>(전설)</color>";
+    public string DisplayName { get; } = "하드 카운터";
     public string Description { get; } = "공격 시 대상의 증가된 공격력과 방어력 만큼 자신의 공격력이 증가합니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

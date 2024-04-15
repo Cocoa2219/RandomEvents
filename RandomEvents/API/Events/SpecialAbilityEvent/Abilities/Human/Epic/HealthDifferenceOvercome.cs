@@ -40,7 +40,7 @@ public class HealthDifferenceOvercome : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Epic;
-    public string DisplayName { get; } = "체력 차이 극복 <color=#9A6DD7>(에픽)</color>";
+    public string DisplayName { get; } = "체력 차이 극복";
     public string Description { get; } = "체력 차이에 따라 데미지가 증가합니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

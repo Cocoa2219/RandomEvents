@@ -61,7 +61,7 @@ public class SurvivalExpert : IAbility
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
     public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Unique;
-    public string DisplayName { get; } = "생존 전문가 <color=#FFDC41>(유니크)</color>";
+    public string DisplayName { get; } = "생존 전문가";
     public string Description { get; } = "사망에 이를 수준의 피해를 받을 시 HP 1, AHP 100을 남긴 채로 생존합니다.";
     public SpecialAbilityEvent Event { get; set; }
 
