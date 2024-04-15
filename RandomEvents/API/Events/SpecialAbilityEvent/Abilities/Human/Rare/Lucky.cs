@@ -1,10 +1,9 @@
 ﻿using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
-using Interactables.Interobjects.DoorUtils;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 using UnityEngine;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Rare;
 
 public class Lucky : IAbility
 {

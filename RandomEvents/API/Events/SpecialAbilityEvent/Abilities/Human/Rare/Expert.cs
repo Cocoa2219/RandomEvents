@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using Exiled.API.Enums;
+﻿using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
 using MEC;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Rare;
 
 public class Expert : IAbility
 {
@@ -24,6 +23,8 @@ public class Expert : IAbility
     public void UnregisterEvents()
     {
         Exiled.Events.Handlers.Player.ReceivingEffect -= OnReceivingEffect;
+
+        Player.DisableEffect(EffectType.Scp1853);
     }
 
     private void OnReceivingEffect(ReceivingEffectEventArgs ev)

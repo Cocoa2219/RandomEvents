@@ -248,4 +248,22 @@ public class SpecialAbilityEvent : Event
         PlayerStats.TryAdd(player, new PlayerStatus(0, 0, 0));
         PlayerStats[player] += status;
     }
+
+    public void AddPlayerStatsTime(Player player, PlayerStatus status, float time)
+    {
+        PlayerStats.TryAdd(player, new PlayerStatus(0, 0, 0));
+        Timing.RunCoroutine(AddPlayerStatsTimeCoroutine(player, status, time));
+    }
+
+    public PlayerStatus GetPlayerStats(Player player)
+    {
+        return PlayerStats.TryGetValue(player, out var status) ? status : new PlayerStatus(0, 0, 0);
+    }
+
+    private IEnumerator<float> AddPlayerStatsTimeCoroutine(Player player, PlayerStatus status, float time)
+    {
+        PlayerStats[player] += status;
+        yield return Timing.WaitForSeconds(time);
+        PlayerStats[player] -= status;
+    }
 }

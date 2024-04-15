@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
+using Exiled.Events.EventArgs.Server;
 using MEC;
 using RandomEvents.API.Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Server = Exiled.Events.Handlers.Server;
 
 namespace RandomEvents.API.Events.CollectorEvent;
 
@@ -52,11 +54,13 @@ public class CollectorEvent : Event
     public override void RegisterEvents()
     {
         Exiled.Events.Handlers.Player.ChangingRole += OnRoleChanging;
+        Server.RespawningTeam += OnRespawningTeam;
     }
 
     public override void UnregisterEvents()
     {
         Exiled.Events.Handlers.Player.ChangingRole -= OnRoleChanging;
+        Server.RespawningTeam -= OnRespawningTeam;
     }
 
     private void OnRoleChanging(ChangingRoleEventArgs ev)
@@ -68,6 +72,22 @@ public class CollectorEvent : Event
             for (var i = 0; i < Random.Range(1, 4); i++)
             {
                 ev.Player.AddItem(GetRandomScpItem());
+            }
+        });
+    }
+
+    private void OnRespawningTeam(RespawningTeamEventArgs ev)
+    {
+        Timing.CallDelayed(.1f, () =>
+        {
+            foreach (var player in ev.Players)
+            {
+                if (player.IsScp || !player.IsAlive) continue;
+
+                for (var i = 0; i < Random.Range(1, 4); i++)
+                {
+                    player.AddItem(GetRandomScpItem());
+                }
             }
         });
     }

@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Exiled.API.Features;
+﻿using Exiled.API.Features;
 using Exiled.API.Features.Doors;
 using Exiled.Events.EventArgs.Player;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Rare;
 
 public class Engineer : IAbility
 {

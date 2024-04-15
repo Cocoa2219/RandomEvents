@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Exiled.API.Features.Pickups;
 using Exiled.Events.EventArgs.Player;
+using Exiled.Events.EventArgs.Server;
 using Exiled.Events.Handlers;
 using InventorySystem.Items.Usables.Scp330;
 using MEC;
@@ -43,12 +44,25 @@ public class TrickOrTreatEvent : Event
     {
         Player.ChangingRole += OnChangingRole;
         Player.Dying += OnDying;
+        Server.RespawningTeam += OnRespawningTeam;
     }
 
     public override void UnregisterEvents()
     {
         Player.ChangingRole -= OnChangingRole;
         Player.Dying -= OnDying;
+        Server.RespawningTeam -= OnRespawningTeam;
+    }
+
+    private void OnRespawningTeam(RespawningTeamEventArgs ev)
+    {
+        Timing.CallDelayed(.1f, () =>
+        {
+            foreach (var player in ev.Players)
+            {
+                Timing.RunCoroutine(GetSomeCandies(player, 4));
+            }
+        });
     }
 
     public void OnChangingRole(ChangingRoleEventArgs ev)

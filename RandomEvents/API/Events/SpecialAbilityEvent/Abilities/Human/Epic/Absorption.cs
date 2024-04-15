@@ -2,7 +2,7 @@
 using Exiled.Events.EventArgs.Player;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Epic;
 
 public class Absorption : IAbility
 {

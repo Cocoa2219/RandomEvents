@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Exiled.API.Features;
+﻿using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 using UnityEngine;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Epic;
 
-public class Subjugation
+public class Subjugation : IAbility
 {
     public object Clone()
     {
@@ -37,8 +36,8 @@ public class Subjugation
     public AbilityType Type { get; } = AbilityType.EPIC_SUBJUGATION;
     public Player Player { get; set; }
     public AbilityRole Role { get; } = AbilityRole.Human;
-    public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Rare;
-    public string DisplayName { get; } = "제압 <color=#529CCA>(에픽)</color>";
+    public SpecialAbilityEvent.Rarity Rarity { get; } = SpecialAbilityEvent.Rarity.Epic;
+    public string DisplayName { get; } = "제압 <color=#9A6DD7>(에픽)</color>";
     public string Description { get; } = "피격당할 시 14% 확률로 상대방이 무장해제됩니다.";
     public SpecialAbilityEvent Event { get; set; }
 }

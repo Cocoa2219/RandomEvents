@@ -18,15 +18,15 @@ public class ForceAbility : ICommand
             return false;
         }
 
-        var Event = RandomEvents.Instance.CoreEventHandler.CurrentEvent;
+        var @event = RandomEvents.Instance.CoreEventHandler.CurrentEvent;
 
-        if (Event.Name != "SpecialAbilityEvent")
+        if (@event is null || @event.Name != "SpecialAbilityEvent")
         {
             response = "이벤트가 활성화되어 있지 않습니다.";
             return false;
         }
 
-        var speicalAbilityEvent = (SpecialAbilityEvent)Event;
+        var speicalAbilityEvent = (SpecialAbilityEvent)@event;
 
         switch (arguments.At(0))
         {

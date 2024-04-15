@@ -2,7 +2,7 @@
 using Exiled.API.Features;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Rare;
 
 public class Swiftness : IAbility
 {
@@ -13,7 +13,7 @@ public class Swiftness : IAbility
 
     public void UnregisterEvents()
     {
-
+        Player.DisableEffect(EffectType.MovementBoost);
     }
 
     public AbilityType Type { get; } = AbilityType.RARE_SWIFTNESS;

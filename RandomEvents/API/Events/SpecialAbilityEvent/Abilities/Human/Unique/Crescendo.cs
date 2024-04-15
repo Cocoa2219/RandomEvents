@@ -4,7 +4,7 @@ using Exiled.Events.EventArgs.Player;
 using MEC;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Unique;
 
 public class Crescendo : IAbility
 {
@@ -40,14 +40,16 @@ public class Crescendo : IAbility
         _hitCount++;
 
         var damage = _hitCount * 0.1f;
+        _damage += damage;
 
         Event.AddPlayerStats(Player, new PlayerStatus(damage, 0, 0));
 
         yield return Timing.WaitForSeconds(3f);
 
-        Event.AddPlayerStats(Player, new PlayerStatus(-damage, 0, 0));
+        Event.AddPlayerStats(Player, new PlayerStatus(-_damage, 0, 0));
 
         _hitCount = 0;
+        _damage = 0;
     }
 
     public AbilityType Type { get; } = AbilityType.UNIQUE_CRESCENDO;
@@ -60,4 +62,5 @@ public class Crescendo : IAbility
 
     private int _hitCount;
     private CoroutineHandle _hitCountCoroutine;
+    private float _damage;
 }

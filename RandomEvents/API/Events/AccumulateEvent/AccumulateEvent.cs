@@ -1,4 +1,5 @@
 ﻿using Exiled.Events.EventArgs.Player;
+using Exiled.Events.EventArgs.Server;
 using Exiled.Events.Handlers;
 using MEC;
 
@@ -20,11 +21,13 @@ public class AccumulateEvent : Event
     public override void RegisterEvents()
     {
         Player.ChangingRole += OnChangingRole;
+        Server.RespawningTeam += OnRespawningTeam;
     }
 
     public override void UnregisterEvents()
     {
         Player.ChangingRole -= OnChangingRole;
+        Server.RespawningTeam -= OnRespawningTeam;
     }
 
     public void OnChangingRole(ChangingRoleEventArgs ev)
@@ -32,6 +35,17 @@ public class AccumulateEvent : Event
         Timing.CallDelayed(.1f, () =>
         {
             ev.Player.MaxHealth = float.MaxValue;
+        });
+    }
+
+    private void OnRespawningTeam(RespawningTeamEventArgs ev)
+    {
+        Timing.CallDelayed(.1f, () =>
+        {
+            foreach (var player in ev.Players)
+            {
+                player.MaxHealth = float.MaxValue;
+            }
         });
     }
 }

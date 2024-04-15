@@ -43,9 +43,9 @@ public enum AbilityType
     // SCP-049 abilities
     SCP_049_INFECTIOUS_EQUIPMENT, // 공격 시 대상에게 랜덤한 디버프를 추가로 부여 (10초 간)
     SCP_049_SPECIAL_REMEDY, // HP가 감소할 수록 이동 속도 증가 (최대 60%)
-    SCP_049_UNIQUE_EXPERTISE, // 공격 시 대상 즉시 처치
-    SCP_049_LEGENDARY_DESIGNATION, // “의사의 감각” 스킬 대상에게 심장 마비 효과 부여 (30초 간)
-    SCP_049_SPECIAL_PLAGUE, // 심장 마비 효과를 받은 대상 주변 5m 내 모든 인원에게 심장 마비 효과 전파 (5초 간)
+    SCP_049_EXPERTISE, // 공격 시 대상 즉시 처치
+    SCP_049_DESIGNATION, // “의사의 감각” 스킬 대상에게 심장 마비 효과 부여 (30초 간)
+    SCP_049_PLAGUE, // 심장 마비 효과를 받은 대상 주변 5m 내 모든 인원에게 심장 마비 효과 전파 (5초 간)
 
     // SCP-049-2 abilities
     SCP_049_2_TAIL_BITE, // 적 공격 시 이동 속도 +10% (5초 간)

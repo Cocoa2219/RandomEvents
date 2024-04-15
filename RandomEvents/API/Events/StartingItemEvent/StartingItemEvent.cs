@@ -1,8 +1,10 @@
 ﻿using System;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
+using Exiled.Events.EventArgs.Server;
 using MEC;
 using Random = UnityEngine.Random;
+using Server = Exiled.Events.Handlers.Server;
 
 namespace RandomEvents.API.Events.StartingItemEvent;
 
@@ -41,11 +43,13 @@ public class StartingItemEvent : Event
     public override void RegisterEvents()
     {
         Exiled.Events.Handlers.Player.ChangingRole += OnRoleChanging;
+        Server.RespawningTeam += OnRespawningTeam;
     }
 
     public override void UnregisterEvents()
     {
         Exiled.Events.Handlers.Player.ChangingRole -= OnRoleChanging;
+        Server.RespawningTeam -= OnRespawningTeam;
     }
 
     private void OnRoleChanging(ChangingRoleEventArgs ev)
@@ -56,6 +60,20 @@ public class StartingItemEvent : Event
 
             ev.Player.ClearInventory();
             for (var i = 0; i < Random.Range(5, 8); i++) ev.Player.AddItem(GetRandomItem());
+        });
+    }
+
+    private void OnRespawningTeam(RespawningTeamEventArgs ev)
+    {
+        Timing.CallDelayed(.1f, () =>
+        {
+            foreach (var player in ev.Players)
+            {
+                if (player.IsScp || !player.IsAlive) continue;
+
+                player.ClearInventory();
+                for (var i = 0; i < Random.Range(5, 8); i++) player.AddItem(GetRandomItem());
+            }
         });
     }
 }

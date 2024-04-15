@@ -1,4 +1,5 @@
 ﻿using Exiled.Events.EventArgs.Player;
+using Exiled.Events.EventArgs.Server;
 using Exiled.Events.Handlers;
 using MEC;
 
@@ -25,11 +26,13 @@ public class ChupaChupsEvent : Event
     public override void RegisterEvents()
     {
         Player.ChangingRole += OnChangingRole;
+        Server.RespawningTeam += OnRespawningTeam;
     }
 
     public override void UnregisterEvents()
     {
         Player.ChangingRole -= OnChangingRole;
+        Server.RespawningTeam -= OnRespawningTeam;
     }
 
     public void OnChangingRole(ChangingRoleEventArgs ev)
@@ -37,6 +40,17 @@ public class ChupaChupsEvent : Event
         Timing.CallDelayed(.1f, () =>
         {
             ev.Player.AddItem(ItemType.Jailbird);
+        });
+    }
+
+    private void OnRespawningTeam(RespawningTeamEventArgs ev)
+    {
+        Timing.CallDelayed(.1f, () =>
+        {
+            foreach (var player in ev.Players)
+            {
+                player.AddItem(ItemType.Jailbird);
+            }
         });
     }
 }

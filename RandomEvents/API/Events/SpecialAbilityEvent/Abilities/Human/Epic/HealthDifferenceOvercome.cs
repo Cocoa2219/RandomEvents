@@ -4,7 +4,7 @@ using MEC;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 using UnityEngine;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Epic;
 
 public class HealthDifferenceOvercome : IAbility
 {

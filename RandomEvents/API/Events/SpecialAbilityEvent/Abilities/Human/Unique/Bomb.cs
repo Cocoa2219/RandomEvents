@@ -1,11 +1,11 @@
-﻿using Exiled.API.Features;
+﻿using Exiled.API.Enums;
+using Exiled.API.Features;
 using Exiled.API.Features.Items;
 using Exiled.Events.EventArgs.Player;
 using MEC;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
-using UnityEngine;
 
-namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilites;
+namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Human.Unique;
 
 public class Bomb : IAbility
 {
@@ -28,13 +28,17 @@ public class Bomb : IAbility
     {
         if (ev.Player != Player) return;
 
-        var lift = ev.Player.Lift;
+        var wasInLift = ev.Player.Lift != null;
+        var liftType = wasInLift ? ev.Player.Lift.Type : ElevatorType.Unknown;
 
         var pos = ev.Player.Position;
 
         Timing.CallDelayed(3f, () =>
         {
-            if (lift != null) pos = lift.Position;
+            if (liftType != ElevatorType.Unknown)
+            {
+                pos = Lift.Get(liftType).Position;
+            }
 
             var grenade = (ExplosiveGrenade)Item.Create(ItemType.GrenadeHE);
             grenade.FuseTime = 0.1f;
