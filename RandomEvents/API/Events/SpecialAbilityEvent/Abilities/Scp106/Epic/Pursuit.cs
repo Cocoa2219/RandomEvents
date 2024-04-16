@@ -1,6 +1,7 @@
 ﻿using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs.Scp106;
+using MEC;
 using RandomEvents.API.Events.SpecialAbilityEvent.Enums;
 
 namespace RandomEvents.API.Events.SpecialAbilityEvent.Abilities.Scp106.Epic;
@@ -14,28 +15,29 @@ public class Pursuit : IAbility
 
     public void RegisterEvents()
     {
-        Exiled.Events.Handlers.Scp106.Stalking += OnStalking;
+        Exiled.Events.Handlers.Scp106.ExitStalking += OnExitStalking;
         Exiled.Events.Handlers.Scp106.Teleporting += OnTeleporting;
     }
 
     public void UnregisterEvents()
     {
-        Exiled.Events.Handlers.Scp106.Stalking -= OnStalking;
+        Exiled.Events.Handlers.Scp106.ExitStalking -= OnExitStalking;
         Exiled.Events.Handlers.Scp106.Teleporting -= OnTeleporting;
     }
 
-    private void OnStalking(StalkingEventArgs ev)
+    private void OnExitStalking(ExitStalkingEventArgs ev)
     {
         if (ev.Player != Player) return;
+        ev.IsAllowed = true;
 
-        Player.SyncEffect(new Effect(EffectType.MovementBoost, 6, 20));
+        Player.SyncEffect(new Effect(EffectType.MovementBoost, 7, 20));
     }
 
     private void OnTeleporting(TeleportingEventArgs ev)
     {
         if (ev.Player != Player) return;
 
-        Player.SyncEffect(new Effect(EffectType.MovementBoost, 6, 20));
+        Timing.CallDelayed(2f, () => { Player.SyncEffect(new Effect(EffectType.MovementBoost, 6, 20)); });
     }
 
     public AbilityType Type { get; } = AbilityType.SCP_106_PURSUIT;

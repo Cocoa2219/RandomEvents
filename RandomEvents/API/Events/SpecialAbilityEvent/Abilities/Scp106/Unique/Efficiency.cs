@@ -27,6 +27,7 @@ public class Efficiency : IAbility
     {
         if (ev.Player != Player) return;
 
+        ev.IsAllowed = true;
         _hsDifference = Player.HumeShield;
     }
 

@@ -4,6 +4,7 @@ using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Hazards;
 using Exiled.API.Features.Roles;
+using Exiled.Events.EventArgs.Player;
 using Exiled.Events.EventArgs.Scp173;
 using Hazards;
 using MEC;
@@ -20,28 +21,23 @@ public class ToxicSubstance : IAbility
 
     public void RegisterEvents()
     {
-        _angerCoroutine = Timing.RunCoroutine(AngerCoroutine());
         Exiled.Events.Handlers.Scp173.PlacingTantrum += OnTantrum;
+        Exiled.Events.Handlers.Player.StayingOnEnvironmentalHazard += OnStayingHazard;
     }
 
     public void UnregisterEvents()
     {
         Exiled.Events.Handlers.Scp173.PlacingTantrum -= OnTantrum;
-        if (_angerCoroutine.IsRunning)
-            Timing.KillCoroutines(_angerCoroutine);
+        Exiled.Events.Handlers.Player.StayingOnEnvironmentalHazard -= OnStayingHazard;
     }
 
-    private IEnumerator<float> AngerCoroutine()
+    private void OnStayingHazard(StayingOnEnvironmentalHazardEventArgs ev)
     {
-        while (true)
-        {
-            yield return Timing.WaitForSeconds(1f);
+        if (!_tantrumHazards.Contains(ev.Hazard.As<TantrumHazard>().Base)) return;
 
-            foreach (var pl in _tantrumHazards.Where(tantrumHazard => tantrumHazard is not null).Select(tantrumHazard => (EnvironmentalHazard)tantrumHazard).SelectMany(hazard => hazard.AffectedPlayers.Select(Player.Get)))
-            {
-                pl.Hurt(Player, 3f, DamageType.Custom, null, null);
-            }
-        }
+        if (!_hazardPlayers.Add(ev.Player)) return;
+        ev.Player.Hurt(Player, 3f, DamageType.Custom, null, null);
+        Timing.CallDelayed(1f, () => { _hazardPlayers.Remove(ev.Player); });
     }
 
     private void OnTantrum(PlacingTantrumEventArgs ev)
@@ -59,6 +55,6 @@ public class ToxicSubstance : IAbility
     public string Description { get; } = "오물 위 적에게 1초 당 3의 피해를 입힙니다.";
     public SpecialAbilityEvent Event { get; set; }
 
-    private CoroutineHandle _angerCoroutine;
-    private HashSet<TantrumEnvironmentalHazard> _tantrumHazards = new();
+    private readonly List<TantrumEnvironmentalHazard> _tantrumHazards = new();
+    private HashSet<Player> _hazardPlayers;
 }
